@@ -45,6 +45,82 @@
     <main class="container" role="main">
         <!-- Content will be added in next steps -->
     </main>
+    <!--NOTE CREATOR-->
+        <section class="note-creator" id="noteCreator" aria-label="Create a new note">
+            <!-- Collapsed State -->
+            <div 
+                class="note-creator-trigger" 
+                id="creatorTrigger" 
+                role="button" 
+                tabindex="0"
+                aria-expanded="false"
+                aria-controls="creatorContent"
+            >
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>Take a note...</span>
+                <span class="keyboard-shortcut">Press N to create</span>
+            </div>
+            
+            <!-- Expanded State -->
+            <div class="note-creator-content" id="creatorContent" role="form">
+                <div class="form-group">
+                    <label for="noteTitleInput" class="sr-only">Note title</label>
+                    <input 
+                        type="text" 
+                        class="note-title-input" 
+                        id="noteTitleInput" 
+                        placeholder="Title" 
+                        autocomplete="off"
+                        maxlength="100"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="noteContentInput" class="sr-only">Note content</label>
+                    <textarea 
+                        class="note-content-input" 
+                        id="noteContentInput" 
+                        placeholder="Take a note..." 
+                        rows="3"
+                        maxlength="1000"
+                    ></textarea>
+                </div>
+                
+                <div class="note-creator-actions">
+                    <button 
+                        class="btn-close" 
+                        id="closeCreatorBtn"
+                        title="Close (Esc)"
+                    >
+                        <i class="fas fa-times" aria-hidden="true"></i> Close
+                    </button>
+                    <button 
+                        class="btn-add" 
+                        id="addNoteBtn"
+                        title="Save note (Ctrl+Enter)"
+                    >
+                        <i class="fas fa-plus" aria-hidden="true"></i> Add Note
+                    </button>
+                </div>
+                
+                <div class="note-creator-hint">
+                    <small>Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to save</small>
+                </div>
+            </div>
+        </section>
+
+        <!--NOTES DISPLAY-->
+        <section class="notes-container" id="notesContainer" aria-label="Your notes">
+            <div class="section-header">
+                <h2 class="section-title" id="sectionTitle">Your Notes</h2>
+                <span class="section-count" id="sectionCount">0 notes</span>
+            </div>
+            
+            <div class="notes-grid" id="notesGrid">
+                <!-- Notes will be dynamically injected here -->
+            </div>
+        </section>
+    </main>
 
     <script src="js/script.js"></script>
 </body>
