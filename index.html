@@ -3,167 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simplified Google Keep clone for note-taking">
-    <meta name="theme-color" content="#ffffff">
-    
     <title>Google Keep Clone</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom Styles -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- NAVIGATION BAR -->
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <div class="navbar-brand">
-            <i class="fas fa-sticky-note" aria-hidden="true"></i>
-            <h1>Google Keep Clone</h1>
+    <header class="main-header">
+        <div class="logo-area">
+            <img class="logo-img" src="https://cdn-icons-png.flaticon.com/512/2965/2965358.png" alt="Google Keep Clone logo">
+            <h1>Google Keep <span>Clone</span></h1>
         </div>
-        <div class="navbar-actions">
-            <button 
-                class="btn-archive" 
-                id="archiveBtn" 
-                title="View archived notes (Press A)" 
-                aria-label="Toggle archive view"
-                data-tooltip="Archive View"
-            >
-                <i class="fas fa-archive" aria-hidden="true"></i>
-                <span class="badge" id="archiveCount">0</span>
-            </button>
+        <div class="search-area">
+            <input type="text" id="search-bar" placeholder="Search notes..." aria-label="Search notes">
         </div>
-    </nav>
+    </header>
 
-    <!--MAIN CONTENT -->
-    <main class="container" role="main">
-        <!-- Content will be added in next steps -->
-    </main>
-    <!--NOTE CREATOR-->
-        <section class="note-creator" id="noteCreator" aria-label="Create a new note">
-            <!-- Collapsed State -->
-            <div 
-                class="note-creator-trigger" 
-                id="creatorTrigger" 
-                role="button" 
-                tabindex="0"
-                aria-expanded="false"
-                aria-controls="creatorContent"
-            >
-                <i class="fas fa-plus" aria-hidden="true"></i>
-                <span>Take a note...</span>
-                <span class="keyboard-shortcut">Press N to create</span>
-            </div>
-            
-            <!-- Expanded State -->
-            <div class="note-creator-content" id="creatorContent" role="form">
-                <div class="form-group">
-                    <label for="noteTitleInput" class="sr-only">Note title</label>
-                    <input 
-                        type="text" 
-                        class="note-title-input" 
-                        id="noteTitleInput" 
-                        placeholder="Title" 
-                        autocomplete="off"
-                        maxlength="100"
-                    >
-                </div>
-                
-                <div class="form-group">
-                    <label for="noteContentInput" class="sr-only">Note content</label>
-                    <textarea 
-                        class="note-content-input" 
-                        id="noteContentInput" 
-                        placeholder="Take a note..." 
-                        rows="3"
-                        maxlength="1000"
-                    ></textarea>
-                </div>
-                
-                <div class="note-creator-actions">
-                    <button 
-                        class="btn-close" 
-                        id="closeCreatorBtn"
-                        title="Close (Esc)"
-                    >
-                        <i class="fas fa-times" aria-hidden="true"></i> Close
-                    </button>
-                    <button 
-                        class="btn-add" 
-                        id="addNoteBtn"
-                        title="Save note (Ctrl+Enter)"
-                    >
-                        <i class="fas fa-plus" aria-hidden="true"></i> Add Note
-                    </button>
-                </div>
-                
-                <div class="note-creator-hint">
-                    <small>Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to save</small>
-                </div>
-            </div>
-        </section>
+    <div class="app-container">
+        <aside class="sidebar" aria-label="Note sections">
+            <button id="nav-notes" class="nav-btn active" type="button" aria-pressed="true" data-tooltip="View active notes">Notes</button>
+            <button id="nav-archive" class="nav-btn" type="button" aria-pressed="false" data-tooltip="View archived notes">Archive</button>
+        </aside>
 
-        <!--NOTES DISPLAY-->
-        <section class="notes-container" id="notesContainer" aria-label="Your notes">
-            <div class="section-header">
-                <h2 class="section-title" id="sectionTitle">Your Notes</h2>
-                <span class="section-count" id="sectionCount">0 notes</span>
-            </div>
-            
-            <div class="notes-grid" id="notesGrid">
-                <!-- Notes will be dynamically injected here -->
-            </div>
-        </section>
-    </main>
-    <!--ARCHIVE MODAL -->
-    <div 
-        class="modal" 
-        id="archiveModal" 
-        role="dialog" 
-        aria-modal="true" 
-        aria-label="Archived notes"
-        aria-hidden="true"
-    >
-        <div class="modal-overlay" id="modalOverlay"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>
-                    <i class="fas fa-archive" aria-hidden="true"></i>
-                    Archived Notes
-                </h2>
-                <button 
-                    class="modal-close" 
-                    id="closeModalBtn" 
-                    aria-label="Close archive"
-                    title="Close (Esc)"
-                >
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="modal-body" id="archiveGrid">
-                <!-- Archived notes will appear here -->
-            </div>
-        </div>
+        <main class="workspace">
+            <section class="note-creator-container" aria-label="Create a note">
+                <form id="note-form">
+                    <input type="text" id="note-title" placeholder="Title" class="hidden" aria-label="Note title">
+                    <textarea id="note-text" placeholder="Take a note..." rows="1" required aria-label="Note content"></textarea>
+                    <div id="form-actions" class="hidden">
+                        <button type="submit" id="submit-note-btn" data-tooltip="Add note to your list">Add Note</button>
+                        <button type="button" id="close-form-btn" data-tooltip="Close note creator">Close</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="notes-grid" class="notes-grid" aria-live="polite"></section>
+        </main>
     </div>
 
-    <!--TOAST NOTIFICATION -->
-    <div 
-        class="toast" 
-        id="toast" 
-        role="alert" 
-        aria-live="polite"
-        aria-atomic="true"
-    >
-        <span class="toast-icon" id="toastIcon"></span>
-        <span class="toast-message" id="toastMessage"></span>
+    <div id="edit-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title-heading">
+        <div class="modal-content">
+            <h3 id="modal-title-heading">Edit Note</h3>
+            <input type="text" id="modal-title" aria-label="Edit note title">
+            <textarea id="modal-text" rows="4" aria-label="Edit note content"></textarea>
+            <div class="modal-actions">
+                <button id="save-modal-btn" type="button">Save</button>
+                <button id="close-modal-btn" type="button">Cancel</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
