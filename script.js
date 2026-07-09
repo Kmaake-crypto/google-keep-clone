@@ -90,6 +90,9 @@ function renderNotes() {
                 <button class="archive-btn" type="button" title="${note.isArchived ? 'Move back to notes' : 'Archive note'}">
                     ${note.isArchived ? 'Unarchive' : 'Archive'}
                 </button>
+                <button class="delete-btn" type="button" title="Delete note">
+                    Delete
+                </button>
             </div>
         `;
 
@@ -161,6 +164,13 @@ notesGrid.addEventListener('click', (e) => {
         targetNote.isArchived = !targetNote.isArchived;
         saveToLocalStorage();
         renderNotes();
+    } else if (e.target.closest('.delete-btn')) {
+        e.stopPropagation();
+        if (confirm('Delete this note?')) {
+            notes = notes.filter(n => n.id !== noteId);
+            saveToLocalStorage();
+            renderNotes();
+        }
     } else {
         openEditModal(targetNote);
     }
