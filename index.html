@@ -20,7 +20,32 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Content will be added in steps -->
+
+    < <!--NAVIGATION BAR -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-brand">
+            <i class="fas fa-sticky-note" aria-hidden="true"></i>
+            <h1>Google Keep Clone</h1>
+        </div>
+        <div class="navbar-actions">
+            <button 
+                class="btn-archive" 
+                id="archiveBtn" 
+                title="View archived notes (Press A)" 
+                aria-label="Toggle archive view"
+                data-tooltip="Archive View"
+            >
+                <i class="fas fa-archive" aria-hidden="true"></i>
+                <span class="badge" id="archiveCount">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!--MAIN CONTENT -->
+    <main class="container" role="main">
+        <!-- Content will be added in next steps -->
+    </main>
+
     <script src="js/script.js"></script>
 </body>
 </html>
