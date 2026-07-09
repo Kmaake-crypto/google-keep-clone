@@ -121,6 +121,48 @@
             </div>
         </section>
     </main>
+    <!--ARCHIVE MODAL -->
+    <div 
+        class="modal" 
+        id="archiveModal" 
+        role="dialog" 
+        aria-modal="true" 
+        aria-label="Archived notes"
+        aria-hidden="true"
+    >
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                    Archived Notes
+                </h2>
+                <button 
+                    class="modal-close" 
+                    id="closeModalBtn" 
+                    aria-label="Close archive"
+                    title="Close (Esc)"
+                >
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="archiveGrid">
+                <!-- Archived notes will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <!--TOAST NOTIFICATION -->
+    <div 
+        class="toast" 
+        id="toast" 
+        role="alert" 
+        aria-live="polite"
+        aria-atomic="true"
+    >
+        <span class="toast-icon" id="toastIcon"></span>
+        <span class="toast-message" id="toastMessage"></span>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
