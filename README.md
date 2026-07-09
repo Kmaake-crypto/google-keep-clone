@@ -1,8 +1,8 @@
-# Google Keep Clone
+#Google Keep Clone
 
 A simple Google Keep-style note-taking app built with HTML, CSS, and JavaScript.
 
-## Features
+##Features
 - Create notes with an optional title and text content
 - View notes in a responsive grid layout
 - Archive and unarchive notes
@@ -11,11 +11,11 @@ A simple Google Keep-style note-taking app built with HTML, CSS, and JavaScript.
 - Notes persist in browser local storage
 - Custom header logo and tooltip interactions
 
-## How to Run
+##How to Run
 1. Open the project folder in your browser.
 2. Open `index.html` directly.
 
-## Code Organization
+##Code Organization
 This project is organized as a simple static website:
 - `index.html` - main page structure and semantic application layout
 - `style.css` - visual styling, layout, and responsive behavior
@@ -24,7 +24,7 @@ This project is organized as a simple static website:
 - `site.webmanifest` - manifest metadata for installable app behavior
 - `README.md` - instructions and submission details
 
-## Submission Notes
+##Submission Notes
 This project is deployable as a static website. To submit, include the full project folder and ensure the following files are present:
 - `index.html`
 - `style.css`
