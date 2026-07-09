@@ -1,5 +1,4 @@
-/*GOOGLE KEEP CLONE - STYLESHEET 
-Version: 1.0.0*/
+/*GOOGLE KEEP CLONE -STYLESHEET*/
 
 /*RESET & BASE STYLES*/
 
@@ -210,4 +209,210 @@ kbd {
     padding: 24px 20px;
     flex: 1;
     width: 100%;
+}
+/*NOTE CREATOR*/
+
+.note-creator {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-speed) var(--transition-bezier);
+    position: relative;
+}
+
+.note-creator:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Trigger / Collapsed State */
+.note-creator-trigger {
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+
+.note-creator-trigger:hover {
+    background-color: #f8f9fa;
+}
+
+.note-creator-trigger i {
+    color: var(--secondary-color);
+    font-size: 20px;
+    transition: transform var(--transition-speed) ease;
+}
+
+.note-creator-trigger span {
+    color: var(--secondary-color);
+    font-size: 16px;
+}
+
+.note-creator-trigger .keyboard-shortcut {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text-light);
+    background: #f1f3f4;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+/* Expanded State */
+.note-creator-content {
+    padding: 16px 18px;
+    display: none;
+    animation: expandCreator 0.3s var(--transition-bezier);
+}
+
+.note-creator.active .note-creator-trigger {
+    display: none;
+}
+
+.note-creator.active .note-creator-content {
+    display: block;
+}
+
+@keyframes expandCreator {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 8px;
+}
+
+/* Input Fields */
+.note-title-input {
+    width: 100%;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 0;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-primary);
+    background: transparent;
+    transition: border-bottom-color 0.2s ease;
+}
+
+.note-title-input::placeholder {
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.note-title-input:focus {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.note-content-input {
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    padding: 8px 0;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    max-height: 300px;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-primary);
+    background: transparent;
+    line-height: 1.6;
+}
+
+.note-content-input::placeholder {
+    color: var(--text-light);
+}
+
+.note-content-input:focus {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Creator Actions */
+.note-creator-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-close:hover {
+    background-color: #f1f3f4;
+    color: var(--text-primary);
+}
+
+.btn-close i {
+    font-size: 14px;
+}
+
+.btn-add {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-add:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+}
+
+.btn-add:active {
+    transform: scale(0.96);
+}
+
+.btn-add:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-add i {
+    font-size: 14px;
+}
+
+/* Creator Hint */
+.note-creator-hint {
+    margin-top: 8px;
+    text-align: right;
+    color: var(--text-light);
+    font-size: 12px;
 }
