@@ -35,7 +35,7 @@ This project is deployable as a static website. To submit, include the full proj
 
 The app works without a backend and runs entirely in a browser.
 
-## Project Structure
+##Project Structure
 - `index.html` - Main page structure and application layout
 - `style.css` - Visual styling, responsive layout, and tooltip behavior
 - `script.js` - Note creation, display, archive, search, edit, and persistence logic
